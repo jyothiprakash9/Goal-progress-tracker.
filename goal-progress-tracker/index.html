@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+ <html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Goal Progress Tracker</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="app.js" defer></script>
+</head>
+<!-- index.html -->
+<header>
+    <img src="assets/logo.png" alt="Goal Progress Tracker Logo" id="logo">
+    <h1>Goal Progress Tracker</h1>
+</header>
+
+<body>
+    <!-- Authentication Section -->
+    <div id="auth-section">
+        <h2>Login or Sign Up</h2>
+        <form id="auth-form">
+            <input type="email" id="email" placeholder="Email" required>
+            <input type="password" id="password" placeholder="Password" required minlength="6">
+            <button type="button" onclick="handleAuth()">Submit</button>
+        </form>
+        <p id="auth-message"></p>
+    </div>
+
+    <!-- Main App Section -->
+    <div id="app" style="display: none;">
+        <header>
+            <h1>Goal Progress Tracker</h1>
+            <button id="add-goal-btn" onclick="toggleGoalForm()">Add New Goal</button>
+        </header>
+        <div id="goal-entry" style="display: none;">
+            <h3>Add a Goal</h3>
+            <input type="text" id="goal-desc" placeholder="Goal Description" required>
+            <input type="number" id="goal-days" placeholder="Days to Complete" required>
+            <select id="goal-type">
+                <option value="short-term">Short-Term (7-45 days)</option>
+                <option value="long-term">Long-Term (45+ days)</option>
+            </select>
+            <button onclick="addGoal()">Save Goal</button>
+        </div>
+        <section id="progress-display">
+            <h3>Your Goals</h3>
+            <canvas id="shortTermChart"></canvas>
+            <canvas id="longTermChart"></canvas>
+            <button onclick="updateGoalProgress()">Update Progress</button>
+        </section>
+    </div>
+</body>
+</html>
